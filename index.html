@@ -1,13 +1,734 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My GitHub Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: #000000;
+            color: white;
+            margin-bottom: 0;
+            border-bottom: 3px solid #000000;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 2px solid #ffffff;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .contact-info a:hover {
+            background: #ffffff;
+            color: #000000;
+            border: 3px solid #000000;
+            padding: 6px 14px;
+        }
+
+        .tabs {
+            display: flex;
+            background: #ffffff;
+            border-bottom: 3px solid #000000;
+            margin-bottom: 0;
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 20px 30px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            min-width: 120px;
+            letter-spacing: 0.5px;
+            box-sizing: border-box;
+        }
+
+        .tab-button.active {
+            background: #ffd700;
+            color: #000000;
+            border: none;
+        }
+
+        .tab-button:hover:not(.active) {
+            background: #e0e0e0;
+            border: none;
+        }
+
+        .description-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .description-list li {
+            margin-bottom: 6px; 
+        }
+
+        .tab-content {
+            display: none;
+            background: #ffffff;
+            padding: 40px;
+            animation: fadeIn 0.3s ease;
+            border-bottom: 3px solid #000000;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #000000;
+            border-bottom: 3px solid #000000;
+            padding-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .education-item, .work-item, .skill-item, .project-item {
+            margin-bottom: 15px;
+            padding: 25px;
+            border-left: 4px solid #000000;
+            background: #ffffff;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .institution-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .item-content {
+            flex: 1;
+        }
+
+        /* Override flexbox layout for projects */
+        .project-item {
+            display: block;
+            gap: unset;
+        }
+
+        .education-item:hover, .work-item:hover, .skill-item:hover, .project-item:hover {
+            background: #f8f8f8;
+            border: 2px solid #000000;
+        }
+
+        .item-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        .item-subtitle {
+            font-size: 1.1rem;
+            color: #666666;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .item-date {
+            color: #999999;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            margin-bottom: 15px;
+        }
+
+        .item-description {
+            color: #333333;
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333333;
+        }
+
+        .skills-overview {
+            background: #ffffff;
+            padding: 25px;
+            border: 2px solid #000000;
+        }
+
+        .skills-overview h3 {
+            color: #000000;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: #000000;
+            color: #ffffff;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 2px solid #000000;
+        }
+
+        .skill-tag:hover {
+            background: #ffd700;
+            color: #000000;
+            border-color: #ffd700;
+        }
+
+        .language-skills {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .language-skills h3 {
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .language-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .language-tag {
+            background: #f8f9fa;
+            color: #000000;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 2px solid #e0e0e0;
+            transition: all 0.2s ease;
+        }
+
+        .language-tag:hover {
+            background: #ffd700;
+            color: #000000;
+            border-color: #ffd700;
+        }
+
+        .social-links {
+            width: 400px;
+        }
+
+        .social-links h3 {
+            color: #000000;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-button {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: center;
+            transition: all 0.2s ease;
+            border: 2px solid #000000;
+            box-sizing: border-box;
+        }
+
+        .social-button.linkedin {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .social-button.github {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .social-button:hover {
+            border: 3px solid #000000;
+            background: #ffd700;
+            color: #000000;
+            padding: 11px 19px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        .skill-list li:before {
+            content: "▸";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .project-links {
+            margin-top: 20px;
+        }
+
+        .project-links a {
+            display: inline-block;
+            margin-right: 15px;
+            padding: 10px 20px;
+            background: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 2px solid #000000;
+            letter-spacing: 0.5px;
+        }
+
+        .project-links a:hover {
+            background: #ffd700;
+            color: #000000;
+            border-color: #ffd700;
+        }
+
+        .company-link {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: #666666;
+            transition: all 0.2s ease;
+            opacity: 0.7;
+        }
+
+        .company-link:hover {
+            color: #ffd700;
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666666;
+            margin-top: 0;
+            background: #ffffff;
+            border-top: 3px solid #000000;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0;
+            }
+            
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab-button {
+                min-width: auto;
+                border-right: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            
+            .tab-button:last-child {
+                border-bottom: none;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <p>Welcome to my GitHub Pages site.</p>
+    <div class="container">
+        <header>
+            <h1>Mutlu Cansever</h1>
+            <p>Software Engineer</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('about')">ABOUT</button>
+            <button class="tab-button" onclick="openTab('education')">EDUCATION</button>
+            <button class="tab-button" onclick="openTab('experience')">WORK EXPERIENCE</button>
+            <button class="tab-button" onclick="openTab('projects')">PROJECTS</button>
+        </div>
+
+        <!-- About Tab -->
+        <div id="about" class="tab-content active">
+            <h2 class="section-title">About Me</h2>
+            
+            <div class="about-content">
+                <div class="about-text">                    
+                    <p>
+                        Hi there, I'm Mutlu.
+                    </p>
+                    
+                    <p>
+                        I identify myself as a product engineer with technical depth.
+                    </p>
+
+                    <p>
+                        I enjoy building things, reading how things work, trying out fancy restaurants, hiking in the city, having a cold pint after a long day, and so much more...
+                    </p>
+
+                    <div class="social-links">
+                        <h3>Feel free to reach me out!</h3>
+                        <div class="social-buttons">
+                            <a href="https://linkedin.com/in/mucansever" class="social-button linkedin" target="_blank">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="https://github.com/mucansever" class="social-button github" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="skills-overview">
+                    <h3>Technical Skills Overview</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Go</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Typescript</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Postgres</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Kafka</span>
+                        <span class="skill-tag">gRPC</span>
+                        <span class="skill-tag">TCP/IP</span>
+                        <span class="skill-tag">Reactive Programming</span>
+                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">React</span>
+                    </div>
+                    
+                    <div class="language-skills">
+                        <h3>Languages</h3>
+                        <div class="language-tags">
+                            <span class="language-tag">Turkish (Native)</span>
+                            <span class="language-tag">English (C2)</span>
+                            <span class="language-tag">French (B2)</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Education Tab -->
+        <div id="education" class="tab-content">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <img src="static/hacettepe_university_logo.jpeg" alt="Hacettepe University" class="institution-logo">
+                <div class="item-content">
+                    <div class="item-title">Bachelor of Science in Computer Engineering</div>
+                    <div class="item-subtitle">Hacettepe University</div>
+                    <div class="item-date">2019 - 2023</div>
+                    <div class="item-description">
+                        Graduated with high honors with a GPA of 3.65/4.00.
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <img src="static/university_of_milan_logo.jpeg" alt="Universita degli Studi di Milano" class="institution-logo">
+                <div class="item-content">
+                    <div class="item-title">Exchange Student at Department of Informatics</div>
+                    <div class="item-subtitle">Università degli Studi di Milano</div>
+                    <div class="item-date">2021 - 2022</div>
+                    <div class="item-description">
+                        Took masters level courses with a focus on DBMSs and Data Engineering.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Work Experience Tab -->
+        <div id="experience" class="tab-content">
+            <h2 class="section-title">Work Experience</h2>
+            
+            <div class="work-item">
+                <img src="static/getmidas_logo.jpeg" alt="GetMidas Logo" class="institution-logo">
+                <div class="item-content">
+                    <div class="item-title">Software Developer</div>
+                    <div class="item-subtitle">
+                        Midas
+                        <a href="https://getmidas.com" target="_blank" class="company-link">↗</a>
+                    </div>
+                    <div class="item-date">June 2024 - Present</div>
+                    <div class="item-description">
+                        <ul class="description-list">
+                            <li>Biggest neo-brokerage of Turkey with over $2B AUM.</li>
+                            <li>Worked on market data price latency and resiliency improvements.</li>
+                            <li>Built US Margin and GenAI stock analysis products with technical ownership.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-item"> 
+                <img src="static/goodjobgames_logo.jpeg" alt="GoodJobGames Logo" class="institution-logo">
+                <div class="item-content">
+                    <div class="item-title">Software Engineer</div>
+                    <div class="item-subtitle">
+                        Good Job Games
+                        <a href="https://goodjobgames.com" target="_blank" class="company-link">↗</a>
+                    </div>
+                    <div class="item-date">May 2023 - May 2024</div>
+                    <div class="item-description">
+                        <ul class="description-list">
+                           <li>Leading mobile gaming company with a $60M Series A Round co-led by Menlo Ventures and Anthos Capital</li>
+                            <li>Built the scalable and highly available game-agnostic low-latency distributed backend systems used in Wonder Blast and Match Villains.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-item">
+                <img src="static/peak_games_logo.jpeg" alt="Peak Games Logo" class="institution-logo">
+                <div class="item-content">
+                    <div class="item-title">Software Engineer Intern</div>
+                    <div class="item-subtitle">
+                        Peak
+                        <a href="https://peak.com" target="_blank" class="company-link">↗</a>
+                    </div>
+                    <div class="item-date">June 2022 - September 2022</div>
+                    <div class="item-description">
+                        <ul class="description-list">
+                            <li>First unicorn startup of Turkey with $1.8B valuation.</li>
+                            <li>Maintained the level editor of Star Blast.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Projects Tab -->
+        <div id="projects" class="tab-content">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="project-item">
+                <div class="item-title">
+                    GASS - Gait Analysis with Single camera Setup
+                    <a href="https://github.com/orgs/GaitAnalysis/repositories" target="_blank" class="company-link">↗</a>
+                </div>
+                <div class="item-subtitle">Graduation Project</div>
+                <div class="item-date">September 2022 - May 2023</div>
+                <div class="item-description">
+                    Finishing thesis for my bachelor's at Hacettepe University. We proposed a simpler and more cost-efficient way of performing gait analysis with just the use of a single mobile phone camera, where we achieved 97% accuracy in classifying if the person has a potential neurodegenerative disease or not using OpenPose for generating keypoint gait data from the videos, and an inference LSTM for classifying based on the key points generated by OpenPose.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-title">
+                    How to build a Recommendation System in minutes?
+                    <a href="https://github.com/mucansever/kmeans-recommender" target="_blank" class="company-link">↗</a>
+                </div>
+                <div class="item-subtitle">Experimental Project</div>
+                <div class="item-date">January 2023</div>
+                <div class="item-description">
+                    Created a Streamlit web application that guesses the location of the uploaded images using a CLIP model fine-tuned on images from Google Maps Places API. This NLP-based approach yielded 73% accuracy on 1000 random images from Google Maps.
+
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-title">
+                    Photo geo-location using NLP based model
+                    <a href="https://github.com/mucansever/image4location" target="_blank" class="company-link">↗</a>
+                </div>
+                <div class="item-subtitle">Experimental Project</div>
+                <div class="item-date">May 2022</div>
+                <div class="item-description">
+                    Created a Streamlit web application that guesses the location of the uploaded images using a CLIP model fine-tuned on images from Google Maps Places API. This NLP-based approach yielded 73% accuracy on 1000 random images from Google Maps.
+
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-title">
+                    Huffman Encoder/Decoder
+                    <a href="https://github.com/mucansever/huffman_coding" target="_blank" class="company-link">↗</a>
+                </div>
+                <div class="item-subtitle">Experimental Project</div>
+                <div class="item-date">February 2021</div>
+                <div class="item-description">
+                    Basic compression algorithm written on C++.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Mutlu Cansever. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let content of tabContents) {
+                content.classList.remove('active');
+            }
+
+            // Remove active class from all tab buttons
+            const tabButtons = document.getElementsByClassName('tab-button');
+            for (let button of tabButtons) {
+                button.classList.remove('active');
+            }
+
+            // Show the selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to the clicked button
+            event.target.classList.add('active');
+        }
+
+
+    </script>
 </body>
 </html>
 
