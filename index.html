@@ -19,21 +19,29 @@
             background-color: #ffffff;
             margin: 0;
             padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0;
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         header {
             text-align: center;
-            padding: 25px 0;
+            padding: 18px 0;
             background: #000000;
             color: white;
             margin-bottom: 0;
             border-bottom: 3px solid #000000;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         header h1 {
@@ -80,11 +88,12 @@
             border-bottom: 3px solid #000000;
             margin-bottom: 0;
             overflow-x: auto;
+            flex-shrink: 0;
         }
 
         .tab-button {
             flex: 1;
-            padding: 15px 20px;
+            padding: 8px 12px;
             border: none;
             background: transparent;
             cursor: pointer;
@@ -92,7 +101,7 @@
             font-weight: 600;
             transition: all 0.2s ease;
             white-space: nowrap;
-            min-width: 100px;
+            min-width: 0;
             letter-spacing: 0.5px;
             box-sizing: border-box;
         }
@@ -122,8 +131,10 @@
             display: none;
             background: #ffffff;
             padding: 25px;
+            padding-top: 40px;
             animation: fadeIn 0.3s ease;
-            border-bottom: 3px solid #000000;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .tab-content.active {
@@ -143,6 +154,7 @@
             padding-bottom: 10px;
             font-weight: 700;
             letter-spacing: 1px;
+            width: 100%;
         }
 
         .education-item, .work-item, .skill-item, .project-item {
@@ -157,6 +169,7 @@
             gap: 15px;
             box-sizing: border-box;
             position: relative;
+            width: 100%;
         }
 
         .institution-logo {
@@ -424,7 +437,6 @@
             color: #666666;
             margin-top: 0;
             background: #ffffff;
-            border-top: 3px solid #000000;
         }
 
         @media (max-width: 768px) {
@@ -442,12 +454,28 @@
             
             .tabs {
                 flex-direction: column;
+                background: #ffffff;
+                border-bottom: 3px solid #000000;
             }
             
             .tab-button {
                 min-width: auto;
                 border-right: none;
                 border-bottom: 1px solid #e0e0e0;
+                background: transparent;
+                color: #000000;
+                padding: 15px 20px;
+            }
+
+            .tab-button.active {
+                background: #ffd700;
+                color: #000000;
+                border: none;
+            }
+
+            .tab-button:hover:not(.active) {
+                background: #e0e0e0;
+                border: none;
             }
             
             .tab-button:last-child {
@@ -508,7 +536,6 @@
 
         <!-- About Tab -->
         <div id="about" class="tab-content active">
-            <h2 class="section-title">About Me</h2>
             
             <div class="about-content">
                 <div class="about-text">                    
@@ -517,7 +544,7 @@
                     </p>
                     
                     <p>
-                        I identify myself as a product engineer with technical depth.
+                        I'm a product engineer with great technical depth.
                     </p>
 
                     <p>
@@ -576,7 +603,6 @@
 
         <!-- Education Tab -->
         <div id="education" class="tab-content">
-            <h2 class="section-title">Education</h2>
             
             <div class="education-item">
                 <img src="static/hacettepe_university_logo.jpeg" alt="Hacettepe University" class="institution-logo">
@@ -605,7 +631,6 @@
 
         <!-- Work Experience Tab -->
         <div id="experience" class="tab-content">
-            <h2 class="section-title">Work Experience</h2>
             
             <div class="work-item">
                 <img src="static/getmidas_logo.jpeg" alt="GetMidas Logo" class="institution-logo">
@@ -667,7 +692,6 @@
 
         <!-- Projects Tab -->
         <div id="projects" class="tab-content">
-            <h2 class="section-title">Projects</h2>
             
             <div class="project-item">
                 <div class="item-title">
