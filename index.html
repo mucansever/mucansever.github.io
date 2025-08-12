@@ -196,6 +196,28 @@
             }
         }
 
+        /* Page Titles */
+        .page-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--theme-blue);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--theme-blue);
+            letter-spacing: -0.025em;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--theme-light-blue);
+        }
+
         /* Section Titles */
         .section-title {
             font-size: 1.5rem;
@@ -506,48 +528,119 @@
             border-top: 1px solid var(--theme-border);
         }
 
+        /* Mobile Top Bar */
+        .mobile-topbar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--theme-white);
+            box-shadow: var(--theme-shadow-lg);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-topbar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--theme-border);
+        }
+
+        .mobile-topbar-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--theme-blue);
+        }
+
+        .mobile-menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--theme-gray);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            background: var(--theme-light-gray);
+            color: var(--theme-dark-gray);
+        }
+
+        .mobile-menu-toggle.active {
+            color: var(--theme-blue);
+        }
+
+        .mobile-topbar-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--theme-white);
+        }
+
+        .mobile-topbar-content.expanded {
+            max-height: 300px;
+        }
+
+        .mobile-tabs {
+            display: flex;
+            flex-direction: column;
+            background: var(--theme-white);
+        }
+
+        .mobile-tab-button {
+            padding: 1rem 1.25rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--theme-gray);
+            text-align: left;
+            border-bottom: 1px solid var(--theme-border);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-tab-button:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-tab-button.active {
+            background: var(--theme-blue);
+            color: var(--theme-white);
+        }
+
+        .mobile-tab-button:hover:not(.active) {
+            background: var(--theme-light-gray);
+            color: var(--theme-dark-gray);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
+            .mobile-topbar {
+                display: block;
+            }
+
             .container {
-                padding: 0;
+                padding-top: 4rem;
             }
             
             header {
-                padding: 1.25rem 1rem;
-            }
-            
-            header h1 {
-                font-size: 1.75rem;
+                display: none;
             }
             
             .tabs {
-                flex-direction: column;
-                background: var(--theme-white);
-                border-bottom: 1px solid var(--theme-border);
+                display: none;
             }
             
-            .tab-button {
-                min-width: auto;
-                border-right: none;
-                border-bottom: 1px solid var(--theme-border);
-                background: transparent;
-                color: var(--theme-gray);
-                padding: 0.875rem 1.25rem;
-            }
-
-            .tab-button.active {
-                background: var(--theme-blue);
-                color: var(--theme-white);
-                border: none;
-            }
-
-            .tab-button:hover:not(.active) {
-                background: var(--theme-light-gray);
-                border: none;
-            }
-            
-            .tab-button:last-child {
-                border-bottom: none;
+            .page-title {
+                font-size: 1.75rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.75rem;
             }
             
             .tab-content {
@@ -580,10 +673,41 @@
                 width: 45px;
                 height: 45px;
             }
+
+            .skills-overview {
+                position: static;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.25rem;
+                padding-bottom: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Mobile Top Bar -->
+    <div class="mobile-topbar">
+        <div class="mobile-topbar-header">
+            <div class="mobile-topbar-title">Mutlu Cansever</div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-topbar-content" id="mobileMenu">
+            <div class="mobile-tabs">
+                <button class="mobile-tab-button active" onclick="openMobileTab('about')">About</button>
+                <button class="mobile-tab-button" onclick="openMobileTab('education')">Education</button>
+                <button class="mobile-tab-button" onclick="openMobileTab('experience')">Experience</button>
+                <button class="mobile-tab-button" onclick="openMobileTab('projects')">Projects</button>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <h1>Mutlu Cansever</h1>
@@ -608,8 +732,9 @@
             <button class="tab-button" onclick="openTab('projects')">Projects</button>
         </div>
 
-        <!-- About Tab -->
+                <!-- About Tab -->
         <div id="about" class="tab-content active">
+            <h2 class="page-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">                    
                     <p>
@@ -632,7 +757,7 @@
                         Feel free to reach me out!
                     </p>
 
-
+                    
                     
                 </div>
                 
@@ -670,6 +795,7 @@
 
         <!-- Education Tab -->
         <div id="education" class="tab-content">
+            <h2 class="page-title">Education</h2>
             <div class="education-item">
                 <img src="static/hacettepe_university_logo.jpeg" alt="Hacettepe University" class="institution-logo">
                 <div class="item-content">
@@ -697,6 +823,7 @@
 
         <!-- Work Experience Tab -->
         <div id="experience" class="tab-content">
+            <h2 class="page-title">Work Experience</h2>
             <div class="work-item">
                 <img src="static/getmidas_logo.jpeg" alt="GetMidas Logo" class="institution-logo">
                 <div class="item-content">
@@ -755,6 +882,7 @@
 
         <!-- Projects Tab -->
         <div id="projects" class="tab-content">
+            <h2 class="page-title">Projects</h2>
             <div class="project-item">
                 <div class="item-title">
                     GASS - Gait Analysis with Single camera Setup
@@ -829,6 +957,54 @@
             // Add active class to the clicked button
             event.target.classList.add('active');
         }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const icon = menuToggle.querySelector('i');
+            
+            mobileMenu.classList.toggle('expanded');
+            menuToggle.classList.toggle('active');
+            
+            if (mobileMenu.classList.contains('expanded')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        }
+
+        function openMobileTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let content of tabContents) {
+                content.classList.remove('active');
+            }
+
+            // Remove active class from all mobile tab buttons
+            const mobileTabButtons = document.getElementsByClassName('mobile-tab-button');
+            for (let button of mobileTabButtons) {
+                button.classList.remove('active');
+            }
+
+            // Show the selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to the clicked button
+            event.target.classList.add('active');
+
+            // Close mobile menu after selection
+            toggleMobileMenu();
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileTopbar = document.querySelector('.mobile-topbar');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (!mobileTopbar.contains(event.target) && mobileMenu.classList.contains('expanded')) {
+                toggleMobileMenu();
+            }
+        });
     </script>
 </body>
 </html>
