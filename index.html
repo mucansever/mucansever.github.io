@@ -31,7 +31,6 @@
             --elevation-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
             --elevation-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
             --elevation-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            --elevation-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
             
             /* Typography */
             --font-primary: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -364,12 +363,12 @@
 
         /* About Section */
         .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            max-width: none;
+            margin: 0;
+            min-height: auto;
+            display: block;
+            align-items: unset;
+            justify-content: unset;
         }
 
         .about-text {
@@ -378,155 +377,133 @@
 
         .about-text p {
             margin-bottom: 1.5rem;
-            font-size: 1.125rem;
-            line-height: 1.7;
+            font-size: 1rem;
+            line-height: 1.6;
             color: var(--google-gray-700);
             font-family: var(--font-secondary);
             text-align: left;
         }
 
         .about-text p:first-of-type {
-            font-size: 1.375rem;
-            font-weight: 500;
-            color: var(--google-gray-800);
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--google-gray-700);
+            margin-bottom: 1.5rem;
         }
 
         .about-text p:last-of-type {
-            margin-bottom: 0;
+            margin-bottom: 2rem;
         }
 
-        /* Skills Overview - Material Card */
-        .skills-overview {
-            background: white;
-            padding: 1.75rem;
+        /* Skills Section - Clean & Minimal */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .skills-hero {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--google-gray-50);
+            border-radius: 12px;
+            margin-bottom: 0.5rem;
             border: 1px solid var(--google-gray-200);
-            border-radius: 16px;
-            box-shadow: var(--elevation-1);
-            position: sticky;
-            top: 2rem;
         }
 
-        .skills-overview h3 {
+        .skills-hero h3 {
+            font-size: 1.25rem;
             color: var(--google-gray-800);
-            margin-bottom: 1.25rem;
-            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
             font-weight: 500;
-            letter-spacing: -0.01em;
-            font-family: var(--font-primary);
         }
 
-        .skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.625rem;
-            margin-bottom: 1.75rem;
+        .skills-hero p {
+            color: var(--google-gray-600);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
         }
 
-        .skill-tag {
-            background: var(--google-blue);
-            color: white;
-            padding: 0.375rem 0.875rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--google-blue);
-            border-radius: 20px;
-            font-family: var(--font-secondary);
-        }
-
-        .skill-tag:hover {
-            background: var(--google-blue-dark);
-            border-color: var(--google-blue-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12);
-        }
-
-        .language-skills {
-            margin-top: 1.75rem;
-            padding-top: 1.75rem;
-            border-top: 1px solid var(--google-gray-200);
-        }
-
-        .language-skills h3 {
-            color: var(--google-gray-800);
-            margin-bottom: 0.875rem;
-            font-size: 1.125rem;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            font-family: var(--font-primary);
-        }
-
-        .language-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.625rem;
-        }
-
-        .language-tag {
-            background: var(--google-gray-100);
-            color: var(--google-gray-700);
-            padding: 0.375rem 0.875rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid var(--google-gray-300);
-            border-radius: 20px;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            font-family: var(--font-secondary);
-        }
-
-        .language-tag:hover {
-            background: var(--google-blue);
-            color: white;
-            border-color: var(--google-blue);
-            transform: translateY(-1px);
-        }
-
-        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.25rem;
+            gap: 1rem;
         }
 
         .skill-category {
             background: white;
             padding: 1.25rem;
-            border-radius: 16px;
-            border-left: 4px solid var(--google-blue);
+            border-radius: 12px;
             box-shadow: var(--elevation-1);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
+            border: 1px solid var(--google-gray-200);
         }
 
         .skill-category:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+            box-shadow: var(--elevation-2);
+            border-color: var(--google-blue-light);
         }
 
         .skill-category h3 {
             color: var(--google-gray-800);
-            margin-bottom: 0.875rem;
+            margin-bottom: 1rem;
             font-size: 1.125rem;
             font-weight: 500;
             font-family: var(--font-primary);
+            border-bottom: 2px solid var(--google-blue-light);
+            padding-bottom: 0.5rem;
         }
 
         .skill-list {
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
+
+
 
         .skill-list li {
-            padding: 0.25rem 0;
+            padding: 0.5rem 0;
             color: var(--google-gray-700);
-            font-size: 0.875rem;
+            font-size: 0.9rem;
             font-family: var(--font-secondary);
+            border-bottom: 1px solid var(--google-gray-100);
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        .skill-list li:before {
-            content: "▸";
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-list li:hover {
+            color: var(--google-blue-dark);
+        }
+
+        .skill-list li::before {
+            content: "•";
             color: var(--google-blue);
             font-weight: bold;
-            margin-right: 0.625rem;
+            margin-right: 0.5rem;
+        }
+
+        .language-name {
+            font-weight: 500;
+            color: var(--google-gray-800);
+        }
+
+        .language-level {
+            background: var(--google-blue-light);
+            color: var(--google-blue-dark);
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--google-blue);
         }
 
         /* Project Links */
@@ -592,13 +569,13 @@
         .timeline {
             position: relative;
             padding: 2rem 0 0 0;
-            margin-left: 130px; /* Further increased left margin to accommodate maximum date text space */
+            margin-left: 20px; /* Add left margin to accommodate dates */
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 24px;
+            left: 80px;
             top: 0;
             bottom: 0;
             width: 2px;
@@ -616,16 +593,16 @@
 
         .timeline-date {
             position: absolute;
-            left: -100px; /* Further increased left distance for maximum space */
+            left: -20px;
             top: 0;
             font-size: 0.8rem;
             font-weight: 500;
             color: var(--google-gray-500);
             white-space: normal; /* Allow text wrapping */
             z-index: 1;
-            max-width: 90px; /* Increased width for better text flow */
+            max-width: 160px; /* Increased width for longer dates */
             line-height: 1.3; /* Slightly increased line height */
-            padding-right: 5px; /* Further reduced right padding */
+            padding-right: 75px; /* Increased right padding for a little more space */
         }
 
         .timeline-marker {
@@ -635,7 +612,8 @@
             background: var(--google-gray-300);
             border: 3px solid white;
             box-shadow: 0 0 0 3px var(--google-gray-200);
-            margin-right: 2rem;
+            margin-left: 72px;
+            margin-right: 1.5rem;
             flex-shrink: 0;
             z-index: 2;
             position: relative;
@@ -812,12 +790,26 @@
             
             .skills-grid {
                 grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            
+            .skills-hero {
+                padding: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .skills-hero h3 {
+                font-size: 1.125rem;
+            }
+            
+            .skill-category {
+                padding: 1rem;
             }
             
             .about-content {
                 max-width: 100%;
-                padding: 0 1rem;
-                min-height: 300px;
+                padding: 0;
+                min-height: auto;
             }
 
             .education-item, .work-item, .skill-item, .project-item {
@@ -858,8 +850,10 @@
                 height: 12px;
                 margin-right: 1rem;
                 position: absolute;
-                left: -1px; /* Center the dot on the timeline line */
+                left: 5px; /* Center the dot on the timeline line */
                 top: 0;
+                margin-left: 0; /* Reset any inherited margins */
+                transform: translateX(-50%); /* Center the dot on the line */
             }
 
             .timeline-item {
@@ -925,7 +919,6 @@
         <div class="mobile-topbar-content" id="mobileMenu">
             <div class="mobile-tabs">
                 <button class="mobile-tab-button active" onclick="openMobileTab('about')">About</button>
-                <button class="mobile-tab-button" onclick="openMobileTab('career')">Career</button>
                 <button class="mobile-tab-button" onclick="openMobileTab('skills')">Skills</button>
                 <button class="mobile-tab-button" onclick="openMobileTab('projects')">Projects</button>
             </div>
@@ -951,7 +944,6 @@
 
         <div class="tabs">
             <button class="tab-button active" onclick="openTab('about')">About</button>
-            <button class="tab-button" onclick="openTab('career')">Career</button>
             <button class="tab-button" onclick="openTab('skills')">Skills</button>
             <button class="tab-button" onclick="openTab('projects')">Projects</button>
         </div>
@@ -977,15 +969,10 @@
                     </p>
 
                     <p>
-                        Feel free to reach me out!
+                        This has been my journey so far:
                     </p>
                 </div>
             </div>
-        </div>
-
-        <!-- Career Timeline Tab -->
-        <div id="career" class="tab-content">
-            <h2 class="page-title">Career Timeline</h2>
             
             <div class="timeline">
                 <div class="timeline-item">
@@ -1101,77 +1088,89 @@
 
         <!-- Skills Tab -->
         <div id="skills" class="tab-content">
-            <h2 class="page-title">Skills</h2>
+            <h2 class="section-title">Skills</h2>
             
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <ul class="skill-list">
-                        <li>Go</li>
-                        <li>Java</li>
-                        <li>Python</li>
-                        <li>TypeScript/JavaScript</li>
-                        <li>C++</li>
-                    </ul>
-                </div>
+            <div class="skills-container">
+                                 <div class="skills-hero">
+                     <p>I specialize in building scalable, high-performance systems with a focus on distributed architecture on modern infrastructures.</p>
+                 </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <ul class="skill-list">
+                            <li>Go</li>
+                            <li>Java</li>
+                            <li>Python</li>
+                            <li>TypeScript/JavaScript</li>
+                            <li>C++</li>
+                        </ul>
+                    </div>
 
-                <div class="skill-category">
-                    <h3>Backend Technologies</h3>
-                    <ul class="skill-list">
-                        <li>Redis</li>
-                        <li>PostgreSQL</li>
-                        <li>Kafka</li>
-                        <li>gRPC</li>
-                        <li>GraphQL</li>
-                        <li>REST APIs</li>
-                    </ul>
-                </div>
+                    <div class="skill-category">
+                        <h3>Backend Technologies</h3>
+                        <ul class="skill-list">
+                            <li>Redis</li>
+                            <li>PostgreSQL</li>
+                            <li>Kafka</li>
+                            <li>gRPC</li>
+                            <li>GraphQL</li>
+                            <li>REST APIs</li>
+                        </ul>
+                    </div>
 
-                <div class="skill-category">
-                    <h3>Cloud & Infrastructure</h3>
-                    <ul class="skill-list">
-                        <li>AWS</li>
-                        <li>Kubernetes</li>
-                        <li>Docker</li>
-                        <li>Microservices</li>
-                        <li>CI/CD</li>
-                    </ul>
-                </div>
+                    <div class="skill-category">
+                        <h3>Cloud & Infrastructure</h3>
+                        <ul class="skill-list">
+                            <li>AWS</li>
+                            <li>Kubernetes</li>
+                            <li>Docker</li>
+                            <li>Microservices</li>
+                            <li>CI/CD</li>
+                        </ul>
+                    </div>
 
-                <div class="skill-category">
-                    <h3>Networking & Systems</h3>
-                    <ul class="skill-list">
-                        <li>TCP/IP</li>
-                        <li>Distributed Systems</li>
-                        <li>System Design</li>
-                        <li>Observability</li>
-                    </ul>
-                </div>
+                    <div class="skill-category">
+                        <h3>Networking & Systems</h3>
+                        <ul class="skill-list">
+                            <li>TCP/IP</li>
+                            <li>Distributed Systems</li>
+                            <li>System Design</li>
+                            <li>Observability</li>
+                        </ul>
+                    </div>
 
-                <div class="skill-category">
-                    <h3>Frontend & Tools</h3>
-                    <ul class="skill-list">
-                        <li>React</li>
-                        <li>Git</li>
-                        <li>Linux</li>
-                        <li>Shell Scripting</li>
-                    </ul>
-                </div>
+                    <div class="skill-category">
+                        <h3>Frontend & Tools</h3>
+                        <ul class="skill-list">
+                            <li>React</li>
+                            <li>Git</li>
+                            <li>Linux</li>
+                            <li>Shell Scripting</li>
+                        </ul>
+                    </div>
 
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <ul class="skill-list">
-                        <li>Turkish (Native)</li>
-                        <li>English (C2)</li>
-                        <li>French (B2)</li>
-                    </ul>
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <ul class="skill-list">
+                            <li>
+                                Turkish - Native
+                            </li>
+                            <li>
+                                English - Secondary
+                            </li>
+                            <li>
+                                French - Conversational
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Projects Tab -->
         <div id="projects" class="tab-content">
-            <h2 class="page-title">Projects</h2>
+            <h2 class="section-title">Projects</h2>
             
             <div class="project-item">
                 <div class="item-title">
