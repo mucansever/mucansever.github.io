@@ -134,6 +134,26 @@
             border-color: var(--google-blue);
         }
 
+        .header-link {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: block;
+        }
+
+        .header-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .header-link:hover h1 {
+            color: var(--google-blue-dark);
+        }
+
+        .header-link:hover p {
+            color: var(--google-blue);
+        }
+
         /* Navigation Tabs - Blended with Background */
         .tabs {
             display: flex;
@@ -892,7 +912,7 @@
     <!-- Mobile Top Bar -->
     <div class="mobile-topbar">
         <div class="mobile-topbar-header">
-            <div class="mobile-topbar-title">Mutlu Cansever</div>
+            <div class="mobile-topbar-title" onclick="openTab('about'); window.scrollTo(0, 0); return false;" style="cursor: pointer;">Mutlu Cansever</div>
             <div class="mobile-right-section">
                 <div class="mobile-social-links">
                     <a href="https://linkedin.com/in/mucansever" class="mobile-social-link" target="_blank">
@@ -921,8 +941,10 @@
 
     <div class="container">
         <header>
-            <h1>Mutlu Cansever</h1>
-            <p>Software Engineer</p>
+            <a class="header-link" onclick="openTab('about'); return false;">
+                <h1>Mutlu Cansever</h1>
+                <p>Software Engineer</p>
+            </a>
             <div class="header-social-links">
                 <a href="https://linkedin.com/in/mucansever" class="header-social-link" target="_blank">
                     <i class="fab fa-linkedin"></i>
@@ -1230,17 +1252,34 @@
                 content.classList.remove('active');
             }
 
-            // Remove active class from all tab buttons
+            // Remove active class from all tab buttons (desktop)
             const tabButtons = document.getElementsByClassName('tab-button');
             for (let button of tabButtons) {
+                button.classList.remove('active');
+            }
+
+            // Remove active class from all mobile tab buttons
+            const mobileTabButtons = document.getElementsByClassName('mobile-tab-button');
+            for (let button of mobileTabButtons) {
                 button.classList.remove('active');
             }
 
             // Show the selected tab content
             document.getElementById(tabName).classList.add('active');
 
-            // Add active class to the clicked button
-            event.target.classList.add('active');
+            // Find and activate the corresponding desktop tab button
+            const tabButtonsArray = Array.from(tabButtons);
+            const targetButton = tabButtonsArray.find(button => button.getAttribute('onclick') && button.getAttribute('onclick').includes(tabName));
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            // Find and activate the corresponding mobile tab button
+            const mobileTabButtonsArray = Array.from(mobileTabButtons);
+            const targetMobileButton = mobileTabButtonsArray.find(button => button.getAttribute('onclick') && button.getAttribute('onclick').includes(tabName));
+            if (targetMobileButton) {
+                targetMobileButton.classList.add('active');
+            }
         }
 
         function toggleMobileMenu() {
@@ -1290,6 +1329,19 @@
                 toggleMobileMenu();
             }
         });
+
+        // Ensure page starts at top on refresh
+        function forceScrollToTop() {
+            window.scrollTo(0, 0);
+        }
+        
+        window.addEventListener('load', forceScrollToTop);
+        document.addEventListener('DOMContentLoaded', forceScrollToTop);
+        
+        // Prevent scroll restoration
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
     </script>
 </body>
 </html>
