@@ -135,23 +135,6 @@ const About: React.FC = () => {
         </div>
 
         <div className="timeline-item">
-          <div className="timeline-date">Jun 2021 - Aug 2021</div>
-          <div className="timeline-marker"></div>
-          <div className="timeline-content">
-            <div className="education-item">
-              <img src="/technarts_logo.jpeg" alt="Technarts" className="institution-logo" />
-              <div className="item-content">
-                <div className="item-title">Software Engineer Intern</div>
-                <div className="item-subtitle">Technarts</div>
-                <div className="item-description">
-                Built an MVC Django application with full-stack ownership.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="timeline-item">
           <div className="timeline-date">Sep 2019 - Jun 2023</div>
           <div className="timeline-marker"></div>
           <div className="timeline-content">
