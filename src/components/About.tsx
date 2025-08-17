@@ -8,7 +8,7 @@ const About: React.FC = () => {
           </p>
           
           <p>
-            I'm a product engineer with technical depth.
+            I'm a product engineer with technical depth and over 2.5 years of experience.
           </p>
 
           <p>
@@ -29,7 +29,7 @@ const About: React.FC = () => {
       
       <div className="timeline">
         <div className="timeline-item">
-          <div className="timeline-date">June 2024 - Present</div>
+          <div className="timeline-date">Jun 2024 - Present</div>
           <div className="timeline-marker current"></div>
           <div className="timeline-content">
             <div className="work-item">
@@ -42,7 +42,7 @@ const About: React.FC = () => {
                 </div>
                 <div className="item-description">
                   <ul className="description-list">
-                    <li>Biggest neo-brokerage of Turkey with over $2B AUM.</li>
+                    <li>Biggest neo-brokerage of Turkey with over $2B AUM on 2M+ accounts.</li>
                     <li>Worked on market data latency, resiliency, and observability improvements.</li>
                     <li>Built flagship US Margin and GenAI stock analysis products with technical ownership.</li>
                   </ul>
@@ -67,8 +67,8 @@ const About: React.FC = () => {
                 <div className="item-description">
                   <ul className="description-list">
                      <li>Leading mobile gaming company with a $60M Series A Round.</li>
-                     <li>Backend-devops hybrid role, I was responsible for the entire stack of certain flows.</li>
-                     <li>Built the scalable and highly available game-agnostic low-latency distributed backend systems used in Wonder Blast and Match Villains.</li>
+                     <li>Backend/platform engineering hybrid role, I was responsible for the entire stack of certain flows.</li>
+                     <li>Built the low-latency highly-available distributed systems used in Wonder Blast and Match Villains.</li>
                   </ul>
                 </div>
               </div>
@@ -77,7 +77,7 @@ const About: React.FC = () => {
         </div>
 
         <div className="timeline-item">
-          <div className="timeline-date">June 2022 - Sept. 2022</div>
+          <div className="timeline-date">Jun 2022 - Sep 2022</div>
           <div className="timeline-marker"></div>
           <div className="timeline-content">
             <div className="work-item">
@@ -101,7 +101,7 @@ const About: React.FC = () => {
         </div>
 
         <div className="timeline-item">
-          <div className="timeline-date">Sept. 2021 - Feb. 2022</div>
+          <div className="timeline-date">Sep 2021 - Feb 2022</div>
           <div className="timeline-marker"></div>
           <div className="timeline-content">
             <div className="education-item">
@@ -118,14 +118,51 @@ const About: React.FC = () => {
         </div>
 
         <div className="timeline-item">
-          <div className="timeline-date">Sept. 2019 - June 2023</div>
+          <div className="timeline-date">Aug 2021 - Dec 2021</div>
+          <div className="timeline-marker"></div>
+          <div className="timeline-content">
+            <div className="education-item">
+              <img src="/steyfinancialtechnologies_logo.jpeg" alt="Stey Financial Technologies" className="institution-logo" />
+              <div className="item-content">
+                <div className="item-title">Software Engineer Intern</div>
+                <div className="item-subtitle">Stey Financial Technologies</div>
+                <div className="item-description">
+                Contributed to the arbitrage trading project where I managed multiple WebSocket Clients to retrieve live order data from various crypto market APIs.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="timeline-item">
+          <div className="timeline-date">Jun 2021 - Aug 2021</div>
+          <div className="timeline-marker"></div>
+          <div className="timeline-content">
+            <div className="education-item">
+              <img src="/technarts_logo.jpeg" alt="Technarts" className="institution-logo" />
+              <div className="item-content">
+                <div className="item-title">Software Engineer Intern</div>
+                <div className="item-subtitle">Technarts</div>
+                <div className="item-description">
+                Built an MVC Django application with full-stack ownership.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="timeline-item">
+          <div className="timeline-date">Sep 2019 - Jun 2023</div>
           <div className="timeline-marker"></div>
           <div className="timeline-content">
             <div className="education-item">
               <img src="/hacettepe_university_logo.jpeg" alt="Hacettepe University" className="institution-logo" />
               <div className="item-content">
                 <div className="item-title">Bachelor's in Computer Engineering</div>
-                <div className="item-subtitle">Hacettepe University</div>
+                <div className="item-subtitle">
+                  Hacettepe University
+                  <a href="https://www.cs.hacettepe.edu.tr" target="_blank" className="company-link" rel="noopener noreferrer">↗</a>
+                  </div>
                 <div className="item-description">
                   <ul className="description-list">
                     <li>First computer engineering department of Turkey.</li>
