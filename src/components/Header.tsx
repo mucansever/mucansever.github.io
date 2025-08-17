@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ onTabChange }) => {
     <header>
       <div className="header-content">
         <div className="profile-picture">
-          <img src="/static/me.png" alt="Mutlu Cansever" />
+          <img src="/me.png" alt="Mutlu Cansever" />
         </div>
         <div className="header-text">
           <a 
