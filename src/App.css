@@ -212,7 +212,7 @@ header p {
     animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
     box-sizing: border-box;
-    min-height: 500px;
+    min-height: 400px;
     border-radius: 0;
     box-shadow: none;
 }
@@ -401,7 +401,7 @@ header p {
 }
 
 .about-text p:last-of-type {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 /* Skills Section - Clean & Minimal */
@@ -565,7 +565,7 @@ footer {
     text-align: center;
     padding: 1.75rem 0;
     color: var(--google-gray-500);
-    margin-top: 3rem;
+    margin-top: 1rem;
     background: white;
     font-size: 0.85rem;
     border-top: 1px solid var(--google-gray-200);
@@ -575,7 +575,7 @@ footer {
 /* Timeline Styles */
 .timeline {
     position: relative;
-    padding: 2rem 0 0 0;
+    padding: 1rem 0 0 0;
     margin-left: 20px; /* Add left margin to accommodate dates */
 }
 
@@ -591,9 +591,13 @@ footer {
 
 .timeline-item {
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: flex-start;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
 }
 
 .timeline-date {
@@ -845,6 +849,7 @@ footer {
     .timeline {
         padding: 0; /* Remove top padding to align with container */
         margin-left: 10px; /* Further reduced left margin to move timeline more left */
+        margin-bottom: 0; /* Remove bottom margin on mobile */
     }
 
     .timeline::before {
@@ -863,8 +868,12 @@ footer {
     }
 
     .timeline-item {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         position: relative;
+    }
+    
+    .timeline-item:last-child {
+        margin-bottom: 0;
     }
 
     .timeline-date {
@@ -883,7 +892,7 @@ footer {
 
     .timeline-content {
         padding-left: 1rem; /* Reduced left padding to move cards more left */
-        margin-top: 2rem; /* Add space above the cards */
+        margin-top: 1.5rem; /* Increased space above the cards to separate from dates */
     }
 }
 

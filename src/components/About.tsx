@@ -41,8 +41,8 @@ const About: React.FC = () => {
                 <div className="item-description">
                   <ul className="description-list">
                     <li>Biggest neo-brokerage of Turkey with over $2B AUM.</li>
-                    <li>Worked on market data price latency and resiliency improvements.</li>
-                    <li>Built US Margin and GenAI stock analysis products with full technical ownership.</li>
+                    <li>Worked on market data latency, resiliency, and observability improvements.</li>
+                    <li>Built flagship US Margin and GenAI stock analysis products with technical ownership.</li>
                   </ul>
                 </div>
               </div>
@@ -64,8 +64,9 @@ const About: React.FC = () => {
                 </div>
                 <div className="item-description">
                   <ul className="description-list">
-                     <li>Leading mobile gaming company with a $60M Series A Round co-led by Menlo Ventures and Anthos Capital.</li>
-                      <li>Built the scalable and highly available game-agnostic low-latency distributed backend systems used in Wonder Blast and Match Villains.</li>
+                     <li>Leading mobile gaming company with a $60M Series A Round.</li>
+                     <li>Backend-devops hybrid role, I was responsible for the entire stack of certain flows.</li>
+                     <li>Built the scalable and highly available game-agnostic low-latency distributed backend systems used in Wonder Blast and Match Villains.</li>
                   </ul>
                 </div>
               </div>
@@ -121,11 +122,11 @@ const About: React.FC = () => {
             <div className="education-item">
               <img src="/hacettepe_university_logo.jpeg" alt="Hacettepe University" className="institution-logo" />
               <div className="item-content">
-                <div className="item-title">Bachelor of Science in Computer Engineering</div>
+                <div className="item-title">Bachelor's in Computer Engineering</div>
                 <div className="item-subtitle">Hacettepe University</div>
                 <div className="item-description">
                   <ul className="description-list">
-                    <li>First and one of the best computer engineering departments of Turkey.</li>
+                    <li>First computer engineering department of Turkey.</li>
                     <li>Graduated with high honours with a GPA of 3.65/4.00.</li>
                     <li>Problem setter for HUPROG, the largest university-level competitive programming contest in Turkey.</li>
                   </ul>

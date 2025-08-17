@@ -67,13 +67,13 @@ const Skills: React.FC = () => {
             <h3>Languages</h3>
             <ul className="skill-list">
               <li>
-                <span className="language-name">Turkish</span> - Native
+                <span className="language-name">Turkish</span> (Native)
               </li>
               <li>
-                <span className="language-name">English</span> - Secondary
+                <span className="language-name">English</span> (Secondary)
               </li>
               <li>
-                <span className="language-name">French</span> - Conversational
+                <span className="language-name">French</span> (B2)
               </li>
             </ul>
           </div>
