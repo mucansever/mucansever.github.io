@@ -71,7 +71,56 @@ header {
     box-shadow: none;
     position: relative;
     overflow: hidden;
-    border-bottom: 1px solid var(--google-gray-200);
+}
+
+.header-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.profile-picture {
+    flex-shrink: 0;
+}
+
+.profile-picture img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--google-gray-100);
+}
+
+.header-text {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .profile-picture img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    header h1 {
+        text-align: center;
+    }
+    
+    .header-social-links {
+        justify-content: center;
+    }
 }
 
 header::before {
@@ -86,6 +135,7 @@ header h1 {
     position: relative;
     z-index: 1;
     color: var(--google-gray-900);
+    text-align: left;
 }
 
 header p {
@@ -154,7 +204,6 @@ header p {
 .tabs {
     display: flex;
     background: white;
-    border-bottom: 1px solid var(--google-gray-200);
     margin-bottom: 0;
     overflow-x: auto;
     flex-shrink: 0;

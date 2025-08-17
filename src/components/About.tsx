@@ -22,6 +22,8 @@ const About: React.FC = () => {
           <p>
             This has been my journey so far:
           </p>
+
+          <br></br>
         </div>
       </div>
       
