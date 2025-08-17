@@ -1,4 +1,4 @@
-Visit: [https://mucansever.github.io](https://mucansever.github.io)
+Live at: [https://mucansever.github.io](https://mucansever.github.io)
 
 ## Installation
 
@@ -20,19 +20,19 @@ Visit: [https://mucansever.github.io](https://mucansever.github.io)
 
 4. **Open your browser and navigate to `http://localhost:5173`**
 
-## 🏗️ Build for Production
+## Build for Production
 
 ```bash
 npm run build
 ```
 
-## 👀 Preview Production Build
+## Preview Production Build
 
 ```bash
 npm run preview
 ```
 
-## 🚀 Deployment
+## Deployment
 
    ```bash
    npm run deploy

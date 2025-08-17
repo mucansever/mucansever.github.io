@@ -8,11 +8,11 @@ const About: React.FC = () => {
           </p>
           
           <p>
-            I'm a product engineer with technical depth and over 2.5 years of experience.
+            I'm a product engineer with technical depth and over 2.5 years of experience, based in Istanbul.
           </p>
 
           <p>
-            My main areas of interests are distributed systems and computer networks. 
+            My main areas of interests are distributed systems and computer networks.
           </p>
 
           <p>
