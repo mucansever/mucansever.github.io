@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ onTabChange }) => {
             <a href="https://github.com/mucansever" className="header-social-link" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-github"></i>
             </a>
-            <a href="mailto:mutlucansever3@gmail.com" className="header-social-link">
+            <a href="mailto:mucansever@gmail.com" className="header-social-link">
               <i className="fas fa-envelope"></i>
             </a>
           </div>

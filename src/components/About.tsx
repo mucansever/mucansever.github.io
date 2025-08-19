@@ -16,14 +16,12 @@ const About: React.FC = () => {
           </p>
 
           <p>
-            I enjoy building things, reading how things work, trying out fancy restaurants, hiking in the city, having a cold pint after a long day, and so much more...
+            I particularly enjoy learning about how things work in low level.  
           </p>
 
           <p>
             This has been my journey so far:
           </p>
-
-          <br></br>
         </div>
       </div>
       
@@ -42,7 +40,7 @@ const About: React.FC = () => {
                 </div>
                 <div className="item-description">
                   <ul className="description-list">
-                    <li>Biggest neo-brokerage of Turkey with over $2B AUM on 2M+ accounts.</li>
+                    <li>Biggest neo-brokerage of Turkey with over $2B AUM on 3M+ accounts.</li>
                     <li>Worked on market data latency, resiliency, and observability improvements.</li>
                     <li>Built flagship US Margin and GenAI stock analysis products with technical ownership.</li>
                   </ul>

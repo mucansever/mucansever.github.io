@@ -43,7 +43,7 @@ const MobileTopBar: React.FC<MobileTopBarProps> = ({ activeTab, onTabChange }) =
             <a href="https://github.com/mucansever" className="mobile-social-link" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-github"></i>
             </a>
-            <a href="mailto:mutlucansever3@gmail.com" className="mobile-social-link">
+            <a href="mailto:mucansever@gmail.com" className="mobile-social-link">
               <i className="fas fa-envelope"></i>
             </a>
           </div>

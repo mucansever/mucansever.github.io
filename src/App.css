@@ -76,7 +76,7 @@ header {
 .header-content {
     display: flex;
     align-items: flex-start;
-    gap: 3rem;
+    gap: 2.5rem;
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 2rem;
@@ -129,7 +129,6 @@ header::before {
 
 header h1 {
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
     font-weight: 400;
     letter-spacing: -0.02em;
     position: relative;
@@ -144,12 +143,11 @@ header p {
     font-weight: 300;
     position: relative;
     z-index: 1;
-    margin-bottom: 1.5rem;
     color: var(--google-gray-600);
 }
 
 .header-social-links {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: flex-start;
     gap: 1rem;
@@ -211,15 +209,20 @@ header p {
     position: sticky;
     top: 0;
     z-index: 100;
+    justify-content: flex-start;
+    width: fit-content;
+    border: 1px solid var(--google-gray-200);
+    border-radius: 0;
+    margin-left: 2.5rem;
 }
 
 .tab-button {
-    flex: 1;
-    padding: 1rem 1.25rem;
-    border: none;
+    flex: none;
+    padding: 0.75rem 1rem;
+    border: 2px solid transparent;
     background: transparent;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     font-family: var(--font-primary);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -235,17 +238,11 @@ header p {
 .tab-button.active {
     background: transparent;
     color: var(--google-gray-900);
-    border: none;
+    border: 2px solid var(--google-gray-900);
 }
 
 .tab-button.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--google-gray-900);
+    display: none;
 }
 
 .tab-button:hover:not(.active) {
@@ -431,6 +428,7 @@ header p {
 
 .about-text {
     width: 100%;
+    margin-bottom: 2rem;
 }
 
 .about-text p {
@@ -453,7 +451,7 @@ header p {
     margin-bottom: 1rem;
 }
 
-/* Skills Section - Clean & Minimal */
+/* Skills Section */
 .skills-container {
     display: flex;
     flex-direction: column;
@@ -661,6 +659,11 @@ footer {
     max-width: 160px; /* Increased width for longer dates */
     line-height: 1.3; /* Slightly increased line height */
     padding-right: 75px; /* Increased right padding for a little more space */
+    transition: color 0.2s ease;
+}
+
+.timeline-item:hover .timeline-date {
+    color: var(--google-gray-700);
 }
 
 .timeline-marker {
@@ -675,12 +678,23 @@ footer {
     flex-shrink: 0;
     z-index: 2;
     position: relative;
+    transition: all 0.2s ease;
+}
+
+.timeline-item:hover .timeline-marker {
+    background: var(--google-gray-500);
+    box-shadow: 0 0 0 3px var(--google-gray-300);
+}
+
+.timeline-item:hover .timeline-marker.current {
+    background: #059669;
+    box-shadow: 0 0 0 3px #a7f3d0;
 }
 
 .timeline-marker.current {
-    background: var(--google-gray-600);
+    background: #10b981;
     border-color: white;
-    box-shadow: 0 0 0 3px var(--google-gray-400);
+    box-shadow: 0 0 0 3px #d1fae5;
 }
 
 .timeline-content {

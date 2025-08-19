@@ -26,7 +26,11 @@ function App() {
 
   const openTab = (tabName: string) => {
     setActiveTab(tabName);
-    navigate(`/${tabName}`);
+    if (tabName === 'about') {
+      navigate('/');
+    } else {
+      navigate(`/${tabName}`);
+    }
   };
 
   return (
