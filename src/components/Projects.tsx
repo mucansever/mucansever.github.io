@@ -5,8 +5,7 @@ const Projects: React.FC = () => {
       
       <div className="project-item">
         <div className="item-title">
-          GASS - Gait Analysis with Single camera Setup
-          <a href="https://github.com/orgs/GaitAnalysis/repositories" target="_blank" className="company-link" rel="noopener noreferrer">↗</a>
+          <a href="https://github.com/orgs/GaitAnalysis/repositories" target="_blank" rel="noopener noreferrer">GASS - Gait Analysis with Single camera Setup</a>
         </div>
         <div className="item-subtitle">Graduation Project</div>
         <div className="item-date">Sep 2022 - May 2023</div>
@@ -17,8 +16,7 @@ const Projects: React.FC = () => {
 
       <div className="project-item">
         <div className="item-title">
-          How to build a Recommendation System in minutes?
-          <a href="https://github.com/mucansever/kmeans-recommender" target="_blank" className="company-link" rel="noopener noreferrer">↗</a>
+          <a href="https://github.com/mucansever/kmeans-recommender" target="_blank" rel="noopener noreferrer">How to build a Recommendation System in minutes?</a>
         </div>
         <div className="item-subtitle">Experimental Project</div>
         <div className="item-date">Jan 2023</div>
@@ -29,8 +27,7 @@ const Projects: React.FC = () => {
 
       <div className="project-item">
         <div className="item-title">
-          Photo geo-location using NLP based model
-          <a href="https://github.com/mucansever/image4location" target="_blank" className="company-link" rel="noopener noreferrer">↗</a>
+          <a href="https://github.com/mucansever/image4location" target="_blank" rel="noopener noreferrer">Photo geo-location using NLP based model</a>
         </div>
         <div className="item-subtitle">Experimental Project</div>
         <div className="item-date">May 2022</div>
@@ -41,8 +38,7 @@ const Projects: React.FC = () => {
 
       <div className="project-item">
         <div className="item-title">
-          Huffman Encoder/Decoder
-          <a href="https://github.com/mucansever/huffman_coding" target="_blank" className="company-link" rel="noopener noreferrer">↗</a>
+          <a href="https://github.com/mucansever/huffman_coding" target="_blank" rel="noopener noreferrer">Huffman Encoder/Decoder</a>
         </div>
         <div className="item-subtitle">Experimental Project</div>
         <div className="item-date">Feb 2021</div>
