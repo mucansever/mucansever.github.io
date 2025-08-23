@@ -5,6 +5,7 @@
     --text-muted: #666666;
     --border-color: #cccccc;
     --background-light: #f9f9f9;
+    --background-highlight: #88ff2d;
     
     /* Theme Color */
     --theme-color: #000000;
@@ -20,6 +21,17 @@
     box-sizing: border-box;
 }
 
+/* Text Selection Highlighting */
+::selection {
+    background-color: var(--background-highlight);
+    color: #000000;
+}
+
+::-moz-selection {
+    background-color: var(--background-highlight);
+    color: #000000;
+}
+
 /* Global Link Styling */
 a {
     text-decoration: underline;
@@ -30,6 +42,7 @@ a {
 
 a:hover {
     color: var(--theme-color);
+    background-color: var(--background-highlight);
 }
 
 a:visited {
@@ -99,10 +112,12 @@ body {
 .tab-button.active {
     color: var(--text-primary);
     text-decoration-color: var(--theme-color);
+    background-color: var(--background-highlight);
 }
 
 .tab-button:hover:not(.active) {
     color: var(--theme-color);
+    background-color: var(--background-highlight);
 }
 
 /* Tab Content */
@@ -151,12 +166,8 @@ body {
 .section-title {
     font-size: 1.375rem;
     margin-bottom: 1.25rem;
-    color: var(--text-secondary);
     font-weight: 500;
-    width: 100%;
     font-family: var(--font-primary);
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.5rem;
 }
 
 /* Content Items - Clean Cards */
@@ -449,13 +460,11 @@ footer {
     font-family: var(--font-secondary);
 }
 
-
-
-
-
-
-
-
+.highlight-text {
+    color: #000000 !important;
+    background-color: var(--background-highlight);
+    display: inline-block;
+}
 
 /* About Profile Picture */
 .about-profile {

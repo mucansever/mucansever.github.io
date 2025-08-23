@@ -1,7 +1,7 @@
 const Projects: React.FC = () => {
   return (
     <div id="projects" className="tab-content">
-      <h2 className="section-title">Projects</h2>
+      <h2 className="section-title highlight-text">Projects</h2>
       
       <div className="project-item">
         <div className="item-title">
