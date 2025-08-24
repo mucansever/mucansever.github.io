@@ -1,8 +1,8 @@
 :root {
     /* Simple Colors */
     --text-primary: #000000;
-    --text-secondary: #333333;
-    --text-muted: #666666;
+    --text-secondary: #000000;
+    --text-muted: #000000;
     --border-color: #cccccc;
     --background-light: #f9f9f9;
     --background-highlight: #88ff2d;
@@ -11,8 +11,8 @@
     --theme-color: #000000;
     
     /* Typography */
-    --font-primary: inherit;
-    --font-secondary: inherit;
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    --font-secondary: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', monospace;
 }
 
 * {
