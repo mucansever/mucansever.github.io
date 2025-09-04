@@ -19,7 +19,7 @@ const About: React.FC = () => {
           </p>
 
           <p>
-          I'm currently based in Istanbul, Turkey. Previously, I lived in Ankara and Milan.
+          I'm currently based in Paris. Previously, I lived in Istanbul, Ankara and Milan.
           </p>
 
           <p>
