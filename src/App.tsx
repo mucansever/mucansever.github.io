@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import FunFacts from './components/FunFacts';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/fun-facts" element={<FunFacts />} />
         </Routes>
       </div>
     </div>
