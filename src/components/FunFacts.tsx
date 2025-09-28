@@ -19,14 +19,25 @@ const FunFacts: React.FC = () => {
         setLoading(true);
         setError(null);
 
-        // Use proxy URLs for development to avoid CORS issues
-        const baseUrl = import.meta.env.DEV ? '/api/fun-facts' : 'https://fun-facts-api-production.up.railway.app/v1/fun-facts';
+        // Use different approaches for dev vs production
+        let todayResponse, recentResponse;
         
-        // Fetch today's fact and recent facts in parallel
-        const [todayResponse, recentResponse] = await Promise.all([
-          fetch(`${baseUrl}/today`),
-          fetch(`${baseUrl}/recent`)
-        ]);
+        if (import.meta.env.DEV) {
+          // Development: use Vite proxy
+          [todayResponse, recentResponse] = await Promise.all([
+            fetch('/api/fun-facts/today'),
+            fetch('/api/fun-facts/recent')
+          ]);
+        } else {
+          // Production: use CORS proxy
+          const proxyUrl = 'https://api.allorigins.win/raw?url=';
+          const apiBase = 'https://fun-facts-api-production.up.railway.app/v1/fun-facts';
+          
+          [todayResponse, recentResponse] = await Promise.all([
+            fetch(proxyUrl + encodeURIComponent(apiBase + '/today')),
+            fetch(proxyUrl + encodeURIComponent(apiBase + '/recent'))
+          ]);
+        }
 
         if (!todayResponse.ok) {
           throw new Error(`Today's fact request failed: ${todayResponse.status} ${todayResponse.statusText}`);
