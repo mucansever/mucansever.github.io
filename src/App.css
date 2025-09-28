@@ -479,34 +479,131 @@ footer {
 }
 
 /* Fun Facts Section */
-.fun-facts-content h2 {
+.fun-facts-container {
+    padding: 2.5rem;
+    background: white;
+    min-height: 400px;
+}
+
+.fun-facts-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.fun-facts-header h1 {
     font-size: 2rem;
     font-weight: 400;
     color: var(--text-primary);
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     font-family: var(--font-primary);
     border-bottom: 2px solid var(--theme-color);
     padding-bottom: 0.5rem;
+    display: inline-block;
 }
 
-.fun-facts-content h3 {
-    font-size: 1.375rem;
-    margin-bottom: 1.25rem;
+.fun-facts-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-family: var(--font-secondary);
+}
+
+.fun-facts-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.fun-facts-tabs .tab-button {
+    background: transparent;
+    cursor: pointer;
+    font-size: 1rem;
     font-weight: 500;
     font-family: var(--font-primary);
-    color: var(--text-secondary);
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-decoration-color: var(--theme-color);
+    text-underline-offset: 2px;
+    border: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.fun-facts-tabs .tab-button.active {
+    color: var(--text-primary);
+    background-color: var(--background-highlight);
+}
+
+.fun-facts-tabs .tab-button:hover:not(.active) {
+    color: var(--theme-color);
+    background-color: var(--background-highlight);
+}
+
+.fun-facts-content {
+    min-height: 200px;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-family: var(--font-secondary);
+    padding: 2rem;
+}
+
+.loading i {
+    font-size: 1.2rem;
+}
+
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: #dc3545;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 1.5rem;
+    border-radius: 4px;
+    font-family: var(--font-secondary);
+    text-align: center;
+}
+
+.error i {
+    font-size: 1.5rem;
+}
+
+.error button {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-secondary);
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.error button:hover {
+    background: #c82333;
 }
 
 .today-fact {
-    margin-bottom: 2.5rem;
+    text-align: center;
 }
 
 .fact-card {
     background: white;
     border: 2px solid var(--border-color);
-    padding: 1.5rem;
-    margin-bottom: 1rem;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
     transition: all 0.2s ease;
+    text-align: left;
 }
 
 .fact-card:hover {
@@ -515,17 +612,11 @@ footer {
     transform: translateY(-1px);
 }
 
-.fact-card.today {
-    background: var(--background-light);
-    border-color: var(--theme-color);
-    border-width: 3px;
-}
-
 .fact-date {
     color: var(--text-muted);
     font-size: 0.8rem;
     font-weight: 500;
-    margin-bottom: 0.875rem;
+    margin-bottom: 1rem;
     display: inline-block;
     background: var(--background-highlight);
     padding: 0.25rem 0.625rem;
@@ -536,34 +627,83 @@ footer {
 .fact-text {
     color: var(--text-muted);
     line-height: 1.6;
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 0;
     font-family: var(--font-secondary);
 }
 
-.facts-grid {
+.refresh-button {
+    background: var(--background-light);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-secondary);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.refresh-button:hover {
+    background: var(--border-color);
+    color: var(--text-secondary);
+    border-color: var(--text-secondary);
+}
+
+.refresh-button i {
+    font-size: 0.9rem;
+}
+
+.recent-facts {
+    text-align: center;
+}
+
+.facts-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.error-message {
-    color: #dc3545;
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    padding: 1rem;
-    border-radius: 4px;
+.no-facts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
     font-family: var(--font-secondary);
+    padding: 2rem;
+}
+
+.no-facts i {
+    font-size: 1.5rem;
+    opacity: 0.5;
 }
 
 /* Responsive adjustments for fun facts */
 @media (max-width: 768px) {
-    .facts-grid {
+    .fun-facts-container {
+        padding: 1.5rem;
+    }
+    
+    .fun-facts-tabs {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .facts-list {
         grid-template-columns: 1fr;
     }
     
     .fact-card {
-        padding: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .fun-facts-header h1 {
+        font-size: 1.5rem;
     }
 }
 

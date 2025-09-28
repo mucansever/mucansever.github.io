@@ -1,136 +1,161 @@
 import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface FunFact {
   date: string;
   fact: string;
 }
 
-const FunFacts: React.FC = () => {
+const FunFacts = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [todayFact, setTodayFact] = useState<FunFact | null>(null);
   const [recentFacts, setRecentFacts] = useState<FunFact[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  // Determine active view based on URL
+  const isTodayRoute = location.pathname === '/v1/fun-facts/today';
+  const isRecentRoute = location.pathname === '/v1/fun-facts/recent';
+  const activeView = isTodayRoute ? 'today' : 'recent';
+  
+
+  const fetchTodayFact = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      // Use proxy in development, CORS proxy in production
+      const apiUrl = import.meta.env.DEV 
+        ? '/api/fun-facts/today' 
+        : 'https://api.codetabs.com/v1/proxy/?quest=https://fun-facts-api-production.up.railway.app/v1/fun-facts/today';
+      
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setTodayFact(data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch today\'s fact');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchRecentFacts = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      // Use proxy in development, CORS proxy in production
+      const apiUrl = import.meta.env.DEV 
+        ? '/api/fun-facts/recent' 
+        : 'https://api.codetabs.com/v1/proxy/?quest=https://fun-facts-api-production.up.railway.app/v1/fun-facts/recent';
+      
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setRecentFacts(data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch recent facts');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    let isMounted = true;
+    if (isTodayRoute) {
+      fetchTodayFact();
+    } else if (isRecentRoute) {
+      fetchRecentFacts();
+    }
+  }, [location.pathname]);
 
-    const fetchFacts = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        // Use different approaches for dev vs production
-        let todayResponse, recentResponse;
-        
-        if (import.meta.env.DEV) {
-          // Development: use Vite proxy
-          [todayResponse, recentResponse] = await Promise.all([
-            fetch('/api/fun-facts/today'),
-            fetch('/api/fun-facts/recent')
-          ]);
-        } else {
-          // Production: use CORS proxy
-          const proxyUrl = 'https://api.allorigins.win/raw?url=';
-          const apiBase = 'https://fun-facts-api-production.up.railway.app/v1/fun-facts';
-          
-          [todayResponse, recentResponse] = await Promise.all([
-            fetch(proxyUrl + encodeURIComponent(apiBase + '/today')),
-            fetch(proxyUrl + encodeURIComponent(apiBase + '/recent'))
-          ]);
-        }
-
-        if (!todayResponse.ok) {
-          throw new Error(`Today's fact request failed: ${todayResponse.status} ${todayResponse.statusText}`);
-        }
-        if (!recentResponse.ok) {
-          throw new Error(`Recent facts request failed: ${recentResponse.status} ${recentResponse.statusText}`);
-        }
-
-        const todayData = await todayResponse.json();
-        const recentData = await recentResponse.json();
-
-        // Only update state if component is still mounted
-        if (isMounted) {
-          setTodayFact(todayData);
-          setRecentFacts(recentData);
-        }
-      } catch (err) {
-        console.error('Fun facts fetch error:', err);
-        if (isMounted) {
-          setError(err instanceof Error ? err.message : 'An error occurred');
-        }
-      } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchFacts();
-
-    // Cleanup function to prevent state updates after component unmounts
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  const handleViewChange = (view: 'today' | 'recent') => {
+    if (view === 'today') {
+      navigate('/v1/fun-facts/today');
+    } else if (view === 'recent') {
+      navigate('/v1/fun-facts/recent');
+    }
+  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
+      weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     });
   };
 
-  if (loading) {
-    return (
-      <div id="fun-facts" className="tab-content">
-        <div className="fun-facts-content">
-          <h2>Fun Facts</h2>
-          <p>Loading interesting facts...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div id="fun-facts" className="tab-content">
-        <div className="fun-facts-content">
-          <h2>Fun Facts</h2>
-          <p className="error-message">Sorry, couldn't load fun facts. {error}</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div id="fun-facts" className="tab-content">
+    <div className="fun-facts-container">
+      <div className="fun-facts-header">
+        <h1>Fun Facts</h1>
+        <p>Discover interesting facts and trivia!</p>
+      </div>
+
+      <div className="fun-facts-tabs">
+        <button
+          className={`tab-button ${activeView === 'today' ? 'active' : ''}`}
+          onClick={() => handleViewChange('today')}
+        >
+          Today's Fact
+        </button>
+        <button
+          className={`tab-button ${activeView === 'recent' ? 'active' : ''}`}
+          onClick={() => handleViewChange('recent')}
+        >
+          Recent Facts
+        </button>
+      </div>
+
       <div className="fun-facts-content">
-        <h2>Fun Facts</h2>
-        
-        {todayFact && (
+        {loading && (
+          <div className="loading">
+            <i className="fas fa-spinner fa-spin"></i>
+            <span>Loading...</span>
+          </div>
+        )}
+
+        {error && (
+          <div className="error">
+            <i className="fas fa-exclamation-triangle"></i>
+            <span>{error}</span>
+            <button onClick={activeView === 'today' ? fetchTodayFact : fetchRecentFacts}>
+              Try Again
+            </button>
+          </div>
+        )}
+
+        {!loading && !error && activeView === 'today' && todayFact && (
           <div className="today-fact">
-            <h3>Today's Fun Fact</h3>
-            <div className="fact-card today">
+            <div className="fact-card">
               <div className="fact-date">{formatDate(todayFact.date)}</div>
               <div className="fact-text">{todayFact.fact}</div>
             </div>
           </div>
         )}
 
-        {recentFacts.length > 0 && (
+        {!loading && !error && activeView === 'recent' && (
           <div className="recent-facts">
-            <h3>Recent Fun Facts</h3>
-            <div className="facts-grid">
-              {recentFacts.map((fact, index) => (
-                <div key={`${fact.date}-${index}`} className="fact-card">
-                  <div className="fact-date">{formatDate(fact.date)}</div>
-                  <div className="fact-text">{fact.fact}</div>
-                </div>
-              ))}
-            </div>
+            {recentFacts.length > 0 ? (
+              <div className="facts-list">
+                {recentFacts.map((fact, index) => (
+                  <div key={index} className="fact-card">
+                    <div className="fact-date">{formatDate(fact.date)}</div>
+                    <div className="fact-text">{fact.fact}</div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="no-facts">
+                <i className="fas fa-info-circle"></i>
+                <span>No recent facts available</span>
+              </div>
+            )}
           </div>
         )}
       </div>
