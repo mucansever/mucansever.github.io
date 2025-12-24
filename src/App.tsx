@@ -5,7 +5,6 @@ import Navigation from './components/Navigation';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import FunFacts from './components/FunFacts';
 
 
 function App() {
@@ -32,15 +31,14 @@ function App() {
     <div className="App">
       <div className="container">
         <Navigation activeTab={activeTab} onTabChange={openTab} />
-        
-        <Routes>
-          <Route path="/" element={<About />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/v1/fun-facts/today" element={<FunFacts />} />
-          <Route path="/v1/fun-facts/recent" element={<FunFacts />} />
-        </Routes>
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<About />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/projects" element={<Projects />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );
