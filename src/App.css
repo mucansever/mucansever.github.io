@@ -1,5 +1,4 @@
 :root {
-    /* Simple Colors */
     --text-primary: #000000;
     --text-secondary: #000000;
     --text-muted: #000000;
@@ -7,10 +6,8 @@
     --background-light: #f9f9f9;
     --background-highlight: #88ff2d;
     
-    /* Theme Color */
     --theme-color: #000000;
     
-    /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     --font-secondary: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', monospace;
 }
@@ -21,7 +18,6 @@
     box-sizing: border-box;
 }
 
-/* Text Selection Highlighting */
 ::selection {
     background-color: var(--background-highlight);
     color: #000000;
@@ -32,7 +28,6 @@
     color: #000000;
 }
 
-/* Global Link Styling */
 a {
     text-decoration: underline;
     color: var(--text-primary);
@@ -76,22 +71,22 @@ body {
     flex: 1;
     width: 100%;
     box-sizing: border-box;
-    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: row;
 }
 
-/* Header Styles - Clean White Design */
-
-
-
-
-/* Navigation Tabs - Blended with Background */
 .tabs {
     display: flex;
     background: white;
-    margin-top: 1rem;
-    justify-content: center;
-    width: 100%;
-    gap: 3rem;
+    min-width: 150px;
+    align-items: flex-start;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 5rem;
+}
+
+.tabs ul {
+    list-style: none;
 }
 
 .tab-button {
@@ -107,6 +102,7 @@ body {
     border: none;
     padding: 0;
     min-width: fit-content;
+    margin-bottom: 1rem;
 }
 
 .tab-button.active {
@@ -121,10 +117,14 @@ body {
 }
 
 /* Tab Content */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 2.5rem;
+}
 .tab-content {
     display: block;
     background: white;
-    padding: 2.5rem;
     width: 100%;
     box-sizing: border-box;
     min-height: 400px;
@@ -133,23 +133,36 @@ body {
 /* Responsive spacing for better mobile experience */
 @media (max-width: 768px) {
     .container {
+        flex-direction: column;
         margin: 1rem;
         margin-left: 1rem;
         margin-right: 1rem;
         max-width: calc(100% - 2rem);
     }
     
-    .tab-content {
+    .main-content {
         padding: 1.5rem;
     }
     
     .tabs {
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-bottom: 1px solid var(--border-color);
         margin-top: 0.5rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    .tabs ul {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .tab-button {
+        padding: 0.5rem 1rem;
+        margin-bottom: 0;
     }
 }
-
-
 
 /* Page Titles - Clean Style */
 .page-title {
@@ -200,7 +213,7 @@ body {
     flex: 1;
 }
 
-.education-item:hover, .work-item:hover, .skill-item:hover, .project-item:hover {
+.skill-item:hover, .project-item:hover {
     background: var(--background-light);
     border-color: var(--text-secondary);
     transform: translateY(-1px);
@@ -278,7 +291,7 @@ body {
 .about-text {
     width: 100%;
     margin-bottom: 2rem;
-    text-align: center;
+    text-align: left;
 }
 
 .about-text p {
@@ -286,7 +299,6 @@ body {
     font-size: 1rem;
     line-height: 1.6;
     color: var(--text-muted);
-    font-family: var(--font-secondary);
 }
 
 .about-text p:first-of-type {
@@ -466,7 +478,7 @@ footer {
 
 /* About Profile Picture */
 .about-profile {
-    text-align: center;
+    text-align: left;
     margin-bottom: 2rem;
 }
 
@@ -476,235 +488,6 @@ footer {
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--border-color);
-}
-
-/* Fun Facts Section */
-.fun-facts-container {
-    padding: 2.5rem;
-    background: white;
-    min-height: 400px;
-}
-
-.fun-facts-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.fun-facts-header h1 {
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-    font-family: var(--font-primary);
-    border-bottom: 2px solid var(--theme-color);
-    padding-bottom: 0.5rem;
-    display: inline-block;
-}
-
-.fun-facts-header p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    font-family: var(--font-secondary);
-}
-
-.fun-facts-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 1rem;
-}
-
-.fun-facts-tabs .tab-button {
-    background: transparent;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: var(--font-primary);
-    color: var(--text-muted);
-    text-decoration: underline;
-    text-decoration-color: var(--theme-color);
-    text-underline-offset: 2px;
-    border: none;
-    padding: 0.5rem 1rem;
-    transition: all 0.2s ease;
-}
-
-.fun-facts-tabs .tab-button.active {
-    color: var(--text-primary);
-    background-color: var(--background-highlight);
-}
-
-.fun-facts-tabs .tab-button:hover:not(.active) {
-    color: var(--theme-color);
-    background-color: var(--background-highlight);
-}
-
-.fun-facts-content {
-    min-height: 200px;
-}
-
-.loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    color: var(--text-muted);
-    font-family: var(--font-secondary);
-    padding: 2rem;
-}
-
-.loading i {
-    font-size: 1.2rem;
-}
-
-.error {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    color: #dc3545;
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    padding: 1.5rem;
-    border-radius: 4px;
-    font-family: var(--font-secondary);
-    text-align: center;
-}
-
-.error i {
-    font-size: 1.5rem;
-}
-
-.error button {
-    background: #dc3545;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: var(--font-secondary);
-    font-size: 0.9rem;
-    transition: background-color 0.2s ease;
-}
-
-.error button:hover {
-    background: #c82333;
-}
-
-.today-fact {
-    text-align: center;
-}
-
-.fact-card {
-    background: white;
-    border: 2px solid var(--border-color);
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    transition: all 0.2s ease;
-    text-align: left;
-}
-
-.fact-card:hover {
-    background: var(--background-light);
-    border-color: var(--text-secondary);
-    transform: translateY(-1px);
-}
-
-.fact-date {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    display: inline-block;
-    background: var(--background-highlight);
-    padding: 0.25rem 0.625rem;
-    border: 1px solid var(--border-color);
-    font-family: var(--font-secondary);
-}
-
-.fact-text {
-    color: var(--text-muted);
-    line-height: 1.6;
-    font-size: 1.1rem;
-    margin-bottom: 0;
-    font-family: var(--font-secondary);
-}
-
-.refresh-button {
-    background: var(--background-light);
-    color: var(--text-muted);
-    border: 1px solid var(--border-color);
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: var(--font-secondary);
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.refresh-button:hover {
-    background: var(--border-color);
-    color: var(--text-secondary);
-    border-color: var(--text-secondary);
-}
-
-.refresh-button i {
-    font-size: 0.9rem;
-}
-
-.recent-facts {
-    text-align: center;
-}
-
-.facts-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.no-facts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-muted);
-    font-family: var(--font-secondary);
-    padding: 2rem;
-}
-
-.no-facts i {
-    font-size: 1.5rem;
-    opacity: 0.5;
-}
-
-/* Responsive adjustments for fun facts */
-@media (max-width: 768px) {
-    .fun-facts-container {
-        padding: 1.5rem;
-    }
-    
-    .fun-facts-tabs {
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-    
-    .facts-list {
-        grid-template-columns: 1fr;
-    }
-    
-    .fact-card {
-        padding: 1.5rem;
-    }
-    
-    .fun-facts-header h1 {
-        font-size: 1.5rem;
-    }
 }
 
 html {

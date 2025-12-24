@@ -11,7 +11,7 @@ const About: React.FC = () => {
           </p>
           
           <p>
-          I'm a software engineer with technical depth and over 2.5 years of experience in the FinTech and Mobile Gaming domains.
+          I'm a software engineer with technical depth and over 2.5 years of experience in the FinTech and Mobile Gaming domains. Currently based in Paris, France.
           </p>
 
           <p>
