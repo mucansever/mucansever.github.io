@@ -492,11 +492,3 @@ footer {
 html {
     overflow-y: scroll;
 }
-
-.favorite-articles {
-    margin: 0 auto;
-}
-
-.favorite-articles ul {
-    list-style: none;
-}
