@@ -6,7 +6,7 @@ const About: React.FC = () => {
           <img src="/me.png" alt="Mutlu Cansever" className="about-profile-picture" />
         </div>
         <div className="about-text">                    
-          <p className="highlight-text">
+          <p>
           Hi there, I'm Mutlu.
           </p>
           

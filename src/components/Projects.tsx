@@ -1,8 +1,6 @@
 const Projects: React.FC = () => {
   return (
     <div id="projects" className="tab-content">
-      <h2 className="section-title highlight-text">Projects</h2>
-      
       <div className="project-item">
         <div className="item-title">
           <a href="https://github.com/mucansever/widelogger" target="_blank" rel="noopener noreferrer">widelogger</a>

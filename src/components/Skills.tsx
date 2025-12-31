@@ -1,13 +1,7 @@
 const Skills: React.FC = () => {
   return (
     <div id="skills" className="tab-content">
-      <h2 className="section-title highlight-text">Skills</h2>
-      
       <div className="skills-container">
-        <div className="skills-hero">
-          <p>I specialize in building scalable, high-performance systems with a focus on distributed architecture on modern infrastructures.</p>
-        </div>
-        
         <div className="skills-grid">
           <div className="skill-category">
             <h3>Programming Languages</h3>

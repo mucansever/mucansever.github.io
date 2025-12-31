@@ -4,7 +4,7 @@
     --text-muted: #000000;
     --border-color: #cccccc;
     --background-light: #f9f9f9;
-    --background-highlight: #88ff2d;
+    --background-highlight: #e0e0e0;
     
     --theme-color: #000000;
     
@@ -29,15 +29,20 @@
 }
 
 a {
-    text-decoration: underline;
     color: var(--text-primary);
+    text-decoration: underline;
     text-decoration-color: var(--theme-color);
-    text-underline-offset: 2px;
+    text-underline-offset: 3px;
+
+    border: 2px solid transparent;
+    box-sizing: border-box;
+
+    transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 a:hover {
     color: var(--theme-color);
-    background-color: var(--background-highlight);
+    border-color: var(--theme-color);
 }
 
 a:visited {
@@ -96,24 +101,21 @@ body {
     font-weight: 500;
     font-family: var(--font-primary);
     color: var(--text-muted);
-    text-decoration: underline;
-    text-decoration-color: var(--theme-color);
-    text-underline-offset: 2px;
     border: none;
     padding: 0;
     min-width: fit-content;
     margin-bottom: 1rem;
 }
 
-.tab-button.active {
-    color: var(--text-primary);
-    text-decoration-color: var(--theme-color);
-    background-color: var(--background-highlight);
+.tab-button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    box-sizing: border-box;
 }
 
+.tab-button.active,
 .tab-button:hover:not(.active) {
-    color: var(--theme-color);
-    background-color: var(--background-highlight);
+    border-color: var(--theme-color);
 }
 
 /* Tab Content */
@@ -130,7 +132,6 @@ body {
     min-height: 400px;
 }
 
-/* Responsive spacing for better mobile experience */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -148,7 +149,6 @@ body {
         flex-direction: row;
         overflow-x: auto;
         white-space: nowrap;
-        border-bottom: 1px solid var(--border-color);
         margin-top: 0.5rem;
         margin-bottom: 0;
     }
@@ -164,26 +164,6 @@ body {
     }
 }
 
-/* Page Titles - Clean Style */
-.page-title {
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--text-primary);
-    margin-bottom: 2rem;
-    font-family: var(--font-primary);
-    border-bottom: 2px solid var(--theme-color);
-    padding-bottom: 0.5rem;
-}
-
-/* Section Titles */
-.section-title {
-    font-size: 1.375rem;
-    margin-bottom: 1.25rem;
-    font-weight: 500;
-    font-family: var(--font-primary);
-}
-
-/* Content Items - Clean Cards */
 .skill-item, .project-item {
     margin-bottom: 1.25rem;
     padding: 1.25rem;
@@ -199,14 +179,6 @@ body {
 .project-item {
     display: block;
     gap: unset;
-}
-
-.institution-logo {
-    width: 48px;
-    height: 48px;
-    object-fit: cover;
-    flex-shrink: 0;
-    border: 1px solid var(--border-color);
 }
 
 .item-content {
@@ -278,7 +250,6 @@ body {
     font-size: 1.1rem;
 }
 
-/* About Section */
 .about-content {
     max-width: none;
     margin: 0;
@@ -312,33 +283,10 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Skills Section */
 .skills-container {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-}
-
-.skills-hero {
-    text-align: center;
-    padding: 1.5rem;
-    background: var(--background-light);
-    margin-bottom: 0.5rem;
-    border: 2px solid var(--border-color);
-}
-
-.skills-hero h3 {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.75rem;
-    font-weight: 500;
-}
-
-.skills-hero p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin: 0;
 }
 
 .skills-grid {
@@ -443,40 +391,12 @@ body {
     border-color: var(--text-secondary);
 }
 
-/* Company Links */
-.company-link {
-    display: inline-block;
-    margin-left: 0.375rem;
-    font-size: 0.8rem;
-    text-decoration: none;
-    color: var(--text-muted);
-    opacity: 0.8;
-}
-
-.company-link:hover {
-    color: var(--text-secondary);
-    opacity: 1;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 1.75rem 0;
-    color: var(--text-muted);
-    margin-top: 1rem;
-    background: white;
-    font-size: 0.85rem;
-    border-top: 1px solid var(--border-color);
-    font-family: var(--font-secondary);
-}
-
 .highlight-text {
     color: #000000 !important;
     background-color: var(--background-highlight);
     display: inline-block;
 }
 
-/* About Profile Picture */
 .about-profile {
     text-align: left;
     margin-bottom: 2rem;
