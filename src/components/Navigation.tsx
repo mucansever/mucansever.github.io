@@ -17,14 +17,6 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
       </li>
       <li>
         <button 
-          className={`tab-button ${activeTab === 'skills' ? 'active' : ''}`}
-          onClick={() => onTabChange('skills')}
-        >
-          Skills
-        </button>
-      </li>
-      <li>
-        <button 
           className={`tab-button ${activeTab === 'projects' ? 'active' : ''}`}
           onClick={() => onTabChange('projects')}
         >

@@ -3,7 +3,6 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 import Navigation from './components/Navigation';
 import About from './components/About';
-import Skills from './components/Skills';
 import Projects from './components/Projects';
 
 
@@ -35,7 +34,6 @@ function App() {
           <Routes>
             <Route path="/" element={<About />} />
             <Route path="/about" element={<About />} />
-            <Route path="/skills" element={<Skills />} />
             <Route path="/projects" element={<Projects />} />
           </Routes>
         </div>
