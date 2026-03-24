@@ -3,12 +3,23 @@ const Projects: React.FC = () => {
     <div id="projects" className="tab-content">
       <div className="project-item">
         <div className="item-title">
+          <a href="https://github.com/mucansever/go-switch" target="_blank" rel="noopener noreferrer">go-switch</a>
+        </div>
+        <div className="item-subtitle">Toy Project</div>
+        <div className="item-date">Mar 2026</div>
+        <div className="item-description">
+          A bare-bones Layer 2 network switch in Go using Linux TAP interfaces.
+        </div>
+      </div>
+
+      <div className="project-item">
+        <div className="item-title">
           <a href="https://github.com/mucansever/widelogger" target="_blank" rel="noopener noreferrer">widelogger</a>
         </div>
         <div className="item-subtitle">Go Package</div>
         <div className="item-date">Dec 2025</div>
         <div className="item-description">
-          Trying a new standard to logging in Go applications.
+          Context-based structured logging for Go with field accumulation.
         </div>
       </div>
 
@@ -38,7 +49,7 @@ const Projects: React.FC = () => {
         <div className="item-title">
           <a href="https://github.com/mucansever/kmeans-recommender" target="_blank" rel="noopener noreferrer">How to build a recommendation system?</a>
         </div>
-        <div className="item-subtitle">Tutorial</div>
+        <div className="item-subtitle">Article</div>
         <div className="item-date">Jan 2023</div>
         <div className="item-description">
           Guide on building Simple K-Means recommendation models.
@@ -60,7 +71,7 @@ const Projects: React.FC = () => {
         <div className="item-title">
           <a href="https://github.com/mucansever/huffman_coding" target="_blank" rel="noopener noreferrer">Huffman Encoder/Decoder</a>
         </div>
-        <div className="item-subtitle">Undergrad Project</div>
+        <div className="item-subtitle">Toy Project</div>
         <div className="item-date">Feb 2021</div>
         <div className="item-description">
           Basic compression algorithm written in C++.
